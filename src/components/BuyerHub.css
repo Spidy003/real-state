@@ -1,0 +1,625 @@
+/* ── Buyer Financial & Location Hub ──────────────────────────── */
+.buyer-hub-section {
+  position: relative;
+  padding: var(--section-py) 0;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+body.light-theme .buyer-hub-section {
+  background: transparent;
+  border-top-color: rgba(183, 218, 238, 0.6);
+  border-bottom-color: rgba(183, 218, 238, 0.6);
+}
+
+.hub-section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 40px;
+}
+
+.hub-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.hub-desc {
+  font-size: 15.5px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+/* ── Project Tab Bar Selector ── */
+.hub-project-selector-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.project-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+body.light-theme .project-tab-btn {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.project-tab-btn:hover {
+  border-color: var(--accent-light);
+  color: var(--text-primary);
+}
+
+.project-tab-btn.active {
+  background: var(--grad-accent);
+  color: #ffffff;
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+body.light-theme .project-tab-btn.active {
+  color: #ffffff;
+}
+
+.project-tab-btn .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.project-tab-btn.active .dot {
+  background: #ffffff;
+}
+
+body.light-theme .project-tab-btn.active .dot {
+  background: #ffffff;
+}
+
+/* ── Dashboard Grid ── */
+.hub-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1.25fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .hub-dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.dashboard-widget {
+  padding: 32px;
+  border-radius: 14px;
+}
+
+.widget-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+}
+
+.title-icon {
+  font-size: 20px;
+}
+
+.widget-header h3 {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+/* ── Calculator Styles ── */
+.config-select-group {
+  margin-bottom: 22px;
+}
+
+.input-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.config-button-row {
+  display: flex;
+  gap: 8px;
+}
+
+.config-btn {
+  flex: 1;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+body.light-theme .config-btn {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.config-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--text-primary);
+}
+
+.config-btn.selected {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #080c16;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(200, 164, 107, 0.25);
+}
+
+body.light-theme .config-btn.selected {
+  color: #ffffff;
+}
+
+.price-display-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(200, 164, 107, 0.08);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 26px;
+}
+
+.price-display-row .label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.price-display-row .value {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+}
+
+/* ── Sliders ── */
+.slider-group {
+  margin-bottom: 22px;
+}
+
+.slider-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.slider-label-row .label {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.slider-label-row .value {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.hud-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  outline: none;
+}
+
+body.light-theme .hud-slider {
+  background: #e2e8f0;
+}
+
+.hud-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.hud-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.slider-limits {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 5px;
+}
+
+/* ── Outputs Panel ── */
+.calculator-output-panel {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 22px;
+  margin-top: 28px;
+}
+
+body.light-theme .calculator-output-panel {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.emi-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.emi-result-row .label {
+  font-family: var(--font-heading);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.emi-result-row .emi-value {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+}
+
+.emi-result-row .emi-value .month {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Ratio Bar */
+.ratio-bar-wrapper {
+  margin-bottom: 18px;
+}
+
+.ratio-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.ratio-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.bar-principal {
+  background: var(--accent-gold);
+}
+
+.bar-interest {
+  background: var(--accent-blue);
+  opacity: 0.7;
+}
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 16px;
+}
+
+.breakdown-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.breakdown-item .lbl {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.breakdown-item .val {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Bank Partner Rates Strip */
+.bank-partner-strip {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.bank-strip-title {
+  display: block;
+  font-size: 10.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.bank-rates-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rate-pill {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+body.light-theme .rate-pill {
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+
+/* ── Map Styles ── */
+.map-filters-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.map-filters-row .filter-btn {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+body.light-theme .map-filters-row .filter-btn {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.map-filters-row .filter-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--text-primary);
+}
+
+.map-filters-row .filter-btn.active {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #080c16;
+  font-weight: 700;
+}
+
+body.light-theme .map-filters-row .filter-btn.active {
+  color: #ffffff;
+}
+
+.vector-map-container {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+#proximity-leaflet-map {
+  width: 100%;
+  height: 360px !important;
+  z-index: 1;
+}
+
+/* Map Markers */
+.custom-project-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-pulse-large {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-gold);
+  animation: markerPulse 2s ease-out infinite;
+}
+
+.marker-dot-project {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.custom-landmark-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-pulse-small {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-blue);
+  animation: markerPulse 2.5s ease-out infinite;
+}
+
+.marker-dot-landmark {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes markerPulse {
+  0%   { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.map-tooltip {
+  background: var(--bg-mid) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+  font-family: var(--font-body) !important;
+  font-size: 11.5px !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+}
+
+body.light-theme .map-tooltip {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Proximity Breakdown List Below Map */
+.proximity-connectivity-list {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 18px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+body.light-theme .proximity-connectivity-list {
+  background: #f8fafc;
+}
+
+.list-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.item-details {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+}
+
+.item-details .name {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.item-metrics {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.item-metrics .time {
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.item-metrics .divider {
+  opacity: 0.3;
+}

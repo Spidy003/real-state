@@ -1,0 +1,6 @@
+/* MobileApp shell — full-bleed, no body padding override needed */
+.mobile-app-shell {
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}

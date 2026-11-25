@@ -1,0 +1,280 @@
+/* ── Site Visit Modal ─────────────────────────────────────────── */
+.visit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.visit-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 7, 15, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.visit-modal-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 640px;
+  background: var(--bg-mid);
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(200, 164, 107, 0.12);
+  animation: modalFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+body.light-theme .visit-modal-card {
+  background: #ffffff;
+  border-color: rgba(166, 124, 59, 0.25);
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.2);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.visit-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.visit-modal-close:hover {
+  background: rgba(200, 164, 107, 0.15);
+  border-color: var(--accent-gold);
+  color: var(--text-primary);
+  transform: rotate(90deg);
+}
+
+body.light-theme .visit-modal-close {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+}
+
+.visit-modal-header {
+  margin-bottom: 28px;
+}
+
+.visit-modal-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 10px 0 8px;
+  color: var(--text-primary);
+}
+
+.visit-modal-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Form Styles ── */
+.visit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 580px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+body.light-theme .form-group input,
+body.light-theme .form-group select {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(200, 164, 107, 0.15);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+body.light-theme .form-group input:focus,
+body.light-theme .form-group select:focus {
+  background: #ffffff;
+  border-color: var(--accent-gold);
+}
+
+.form-group select option {
+  background: var(--bg-mid);
+  color: var(--text-primary);
+}
+
+body.light-theme .form-group select option {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+/* ── Checkbox ── */
+.cab-preference {
+  padding: 12px 16px;
+  background: rgba(200, 164, 107, 0.08);
+  border: 1px dashed var(--border-gold);
+  border-radius: 8px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  accent-color: var(--accent-gold);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* ── Actions ── */
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.form-submit-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.privacy-badge {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ── Success State ── */
+.visit-success-state {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  background: var(--accent-green);
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+}
+
+.success-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.success-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto 24px;
+}
+
+.confirmation-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px 20px;
+  max-width: 440px;
+  margin: 0 auto 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+body.light-theme .confirmation-box {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.confirm-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.confirm-row .lbl {
+  color: var(--text-muted);
+}
+
+.confirm-row .val {
+  font-weight: 600;
+  color: var(--text-primary);
+}

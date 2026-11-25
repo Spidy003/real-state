@@ -1,0 +1,288 @@
+/* ─── Enquiry Page Styles ─── */
+.enq-page {
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+.enq-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+body:not(.light-theme) .enq-header {
+  background: rgba(7,11,20,0.88);
+}
+
+.enq-back-btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--border-accent);
+  background: rgba(255,255,255,0.08);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.enq-back-btn:hover {
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+.enq-header-title {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.enq-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.enq-intro {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.enq-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.enq-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.enq-form {
+  padding: 28px 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.enq-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .enq-form-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .enq-form {
+    padding: 20px 16px;
+  }
+  .enq-container {
+    padding: 20px 16px;
+  }
+}
+
+.enq-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.enq-field label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+}
+
+.enq-field .req {
+  color: #ef4444;
+}
+
+.enq-field input,
+.enq-field select,
+.enq-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-accent);
+  background: rgba(255,255,255,0.06);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+body.light-theme .enq-field input,
+body.light-theme .enq-field select,
+body.light-theme .enq-field textarea {
+  background: rgba(255,255,255,0.8);
+  border-color: rgba(37,99,235,0.18);
+}
+
+.enq-field input:focus,
+.enq-field select:focus,
+.enq-field textarea:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+.enq-field.has-error input,
+.enq-field.has-error select {
+  border-color: #ef4444;
+}
+
+.enq-error {
+  font-size: 11.5px;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.enq-mobile-wrap {
+  display: flex;
+  align-items: stretch;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-accent);
+}
+
+.enq-mobile-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: rgba(37,99,235,0.08);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-right: 1px solid var(--border-accent);
+  white-space: nowrap;
+}
+
+.enq-mobile-wrap input {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.enq-full-width {
+  grid-column: 1 / -1;
+}
+
+.enq-field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.enq-submit-btn {
+  width: 100%;
+  padding: 15px 24px;
+  background: var(--grad-accent);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-accent);
+  min-height: 52px;
+}
+
+.enq-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -4px rgba(37,99,235,0.5);
+}
+
+.enq-privacy {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ─── Success State ─── */
+.enq-success-card {
+  max-width: 440px;
+  margin: 60px auto;
+  padding: 40px 28px;
+  text-align: center;
+  background: var(--grad-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+}
+
+body.light-theme .enq-success-card {
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.9);
+}
+
+.enq-success-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.enq-success-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.enq-success-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.enq-id-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px;
+  border-radius: 12px;
+  background: rgba(37,99,235,0.08);
+  border: 1px dashed var(--accent-primary);
+  margin-bottom: 12px;
+}
+
+.enq-id-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.enq-id-value {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  letter-spacing: 0.04em;
+}
+
+.enq-id-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
