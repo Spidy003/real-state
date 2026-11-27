@@ -1,0 +1,142 @@
+/* ============================================================
+   MOBILE CONTACT VIEW — Dark Luxury
+   ============================================================ */
+
+.mcontact {
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+.mcontact__header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--gold-border);
+}
+.mcontact__back,
+.mcontact__menu-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  color: var(--gold);
+}
+.mcontact__header-text { display: flex; flex-direction: column; flex: 1; }
+.mcontact__header-title { font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-primary); line-height: 1.1; }
+.mcontact__header-sub { font-family: var(--font-nav); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+
+.mcontact__scroll {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mcontact__vip-card,
+.mcontact__card {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: 4px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mcontact__tag {
+  font-family: var(--font-nav);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+}
+.mcontact__title { font-size: 1.9rem; }
+.mcontact__accent { color: var(--gold); font-style: italic; }
+.mcontact__desc { font-size: 13.5px; color: var(--text-secondary); }
+.mcontact__checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.mcontact__btn-group { display: flex; flex-direction: column; gap: 8px; }
+.mcontact__btn-primary {
+  padding: 14px;
+  background: var(--gold);
+  color: #0E0C0A;
+  border: none;
+  border-radius: 2px;
+  font-family: var(--font-nav);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.mcontact__btn-secondary {
+  padding: 13px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold-border-hover);
+  border-radius: 2px;
+  font-family: var(--font-nav);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mcontact__card-title {
+  font-family: var(--font-nav);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.mcontact__phone-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: var(--bg-espresso);
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.mcontact__call-pill {
+  font-family: var(--font-nav);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0E0C0A;
+  background: var(--gold);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+.mcontact__hours { font-size: 12px; color: var(--text-muted); }
+
+.mcontact__office strong {
+  display: block;
+  font-family: var(--font-nav);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 2px;
+}
+.mcontact__office p,
+.mcontact__rera-nums { font-size: 12.5px; color: var(--text-secondary); }
+.mcontact__rera-link { font-family: var(--font-nav); font-size: 10.5px; color: var(--gold); text-decoration: underline; }

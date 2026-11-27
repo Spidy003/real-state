@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
 import './FeaturesSection.css'
+import { useState, useEffect } from 'react'
 import { getPublishedProjects } from '../data/projectStore'
 import ProjectAvailabilityBox from './ProjectAvailabilityBox'
 

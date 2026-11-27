@@ -1,7 +1,7 @@
+import './MobilePropertyList.css'
 import { useState, useEffect } from 'react'
 import { getPublishedProjects } from '../data/projectStore'
 import ProjectAvailabilityBox from './ProjectAvailabilityBox'
-import './MobilePropertyList.css'
 
 const FILTERS = [
   { id: 'all', label: 'All' },
@@ -16,8 +16,10 @@ export default function MobilePropertyList({
   onViewIn3D,
   onCheckEMI,
   onCheckFacility,
+  onOpenFloorPlan,
   onOpenVisitModal,
   onOpenEnquiry,
+  onOpenMenu,
 }) {
   const [activeFilter, setActiveFilter] = useState('all')
   const [projectsList, setProjectsList] = useState(getPublishedProjects)
@@ -48,6 +50,16 @@ export default function MobilePropertyList({
         <button className="mpl__visit-quick-btn" onClick={() => onOpenVisitModal(null)}>
           Book Visit
         </button>
+        {onOpenMenu && (
+          <button
+            className="mpl__back-btn"
+            onClick={onOpenMenu}
+            aria-label="Open menu"
+            style={{ fontSize: 17 }}
+          >
+            ☰
+          </button>
+        )}
       </div>
 
       {/* ── Filter chips ── */}
@@ -169,6 +181,16 @@ export default function MobilePropertyList({
                     <span>🗺️ Check Facility</span>
                   </button>
                 </div>
+
+                {onOpenFloorPlan && (
+                  <button
+                    className="mpl__action-secondary"
+                    style={{ width: '100%' }}
+                    onClick={() => onOpenFloorPlan(proj)}
+                  >
+                    <span>📐 View Floor Plan Blueprint</span>
+                  </button>
+                )}
 
                 {/* Book visit */}
                 <button

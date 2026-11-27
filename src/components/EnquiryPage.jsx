@@ -1,6 +1,6 @@
+import './EnquiryPage.css'
 import { useState } from 'react'
 import { getPublishedProjects, logAdminActivity } from '../data/projectStore'
-import './EnquiryPage.css'
 
 const BUDGETS = [
   'Under ₹50 Lakhs',

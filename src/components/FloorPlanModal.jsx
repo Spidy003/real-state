@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from 'react'
 import './FloorPlanModal.css'
+import { useState, useEffect, useMemo } from 'react'
 
 const roomData = {
   '1 BHK': {

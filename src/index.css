@@ -1,354 +1,369 @@
-/* ========================================================
-   AAA Builders & Developers — Modern Luxury Architectural Design System
-   Color Language: Radiant Royal Sapphire & Azure Blue
-   ======================================================== */
+/* ============================================================
+   AAA BUILDERS & DEVELOPERS — DARK LUXURY DESIGN SYSTEM
+   Theme: Dark Luxury · Warm Minimalist · Elegant Editorial
+   ============================================================ */
 
+/* ── Google Fonts already loaded via index.html ── */
+
+/* ══════════════════════════════════════════════════════════════
+   1. CSS CUSTOM PROPERTIES (Design Tokens)
+══════════════════════════════════════════════════════════════ */
+:root {
+  /* Core Palette */
+  --bg-primary:       #101010;
+  --bg-card:          #191919;
+  --bg-espresso:      #29221D;
+  --bg-hover:         #1f1f1f;
+
+  /* Gold Accent */
+  --gold:             #C4A36A;
+  --gold-light:       #D8C6A5;
+  --gold-dim:         rgba(196, 163, 106, 0.18);
+  --gold-border:      rgba(196, 163, 106, 0.28);
+  --gold-border-hover:rgba(196, 163, 106, 0.65);
+
+  /* Typography Colors */
+  --text-primary:     #F1EDE5;
+  --text-secondary:   #A49D93;
+  --text-muted:       #6B6560;
+  --text-gold:        #C4A36A;
+
+  /* Fonts */
+  --font-heading:     'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-nav:         'Montserrat', sans-serif;
+  --font-body:        'Inter', system-ui, sans-serif;
+
+  /* Spacing */
+  --section-pad:      96px;
+  --container-max:    1280px;
+  --container-pad:    40px;
+  --card-radius:      4px;
+  --radius-sm:        2px;
+
+  /* Motion */
+  --transition:       0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:  0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Shadows */
+  --shadow-card:      0 2px 24px rgba(0,0,0,0.5);
+  --shadow-gold:      0 4px 32px rgba(196, 163, 106, 0.08);
+}
+
+/* Light theme overrides (minimal — keep luxury dark by default) */
+body.light-theme {
+  --bg-primary:    #F7F4EF;
+  --bg-card:       #FFFFFF;
+  --bg-espresso:   #EDE8E0;
+  --bg-hover:      #F0EDE8;
+  --text-primary:  #1A1512;
+  --text-secondary:#5C5650;
+  --text-muted:    #9E9890;
+  --gold-dim:      rgba(196, 163, 106, 0.1);
+  --gold-border:   rgba(196, 163, 106, 0.3);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. RESET & BASE
+══════════════════════════════════════════════════════════════ */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-:root {
-  /* ── Luxury Dark Palette (Default) ── */
-  --bg-deep:        #070b14; /* Deep obsidian architectural navy */
-  --bg-mid:         #0c1322; /* Elevated surface card layer */
-  --bg-card:        rgba(12, 19, 34, 0.78);
-  --bg-card-hover:  rgba(17, 27, 48, 0.88);
-
-  /* ── Radiant Royal Sapphire & Azure Accents ── */
-  --accent-primary:       #2563eb; /* Vibrant Royal Sapphire */
-  --accent-light:         #60a5fa; /* Electric Sky Azure */
-  --accent-cyan:          #38bdf8; /* Luminous Cyan Highlight */
-  --accent-dark:          #1d4ed8; /* Deep Cobalt */
-  --accent-green:         #10b981; /* Emerald Trust */
-
-  /* Aliases for backwards compatibility */
-  --accent-gold:          #3b82f6;
-  --accent-gold-light:    #60a5fa;
-  --accent-gold-dark:     #1d4ed8;
-
-  /* Architectural Borders */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-accent: rgba(59, 130, 246, 0.28);
-  --border-blue:   rgba(37, 99, 235, 0.35);
-  --border-gold:   rgba(59, 130, 246, 0.28);
-
-  /* Typography Colors */
-  --text-primary:   #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted:     #64748b;
-  --text-accent:    #60a5fa;
-  --text-gold:      #60a5fa;
-
-  /* Typography */
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body:    'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-
-  /* Gradients */
-  --grad-hero:    linear-gradient(140deg, #060911 0%, #0a1120 50%, #0f1a30 100%);
-  --grad-accent:  linear-gradient(135deg, #3b82f6 0%, #2563eb 60%, #1d4ed8 100%);
-  --grad-text:    linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-  --grad-glow:    linear-gradient(135deg, #93c5fd 0%, #60a5fa 45%, #2563eb 100%);
-  --grad-gold:    linear-gradient(135deg, #93c5fd 0%, #60a5fa 45%, #2563eb 100%);
-  --grad-surface: linear-gradient(180deg, rgba(16, 26, 48, 0.5) 0%, rgba(11, 18, 33, 0.75) 100%);
-  --grad-card:    linear-gradient(180deg, rgba(14, 23, 42, 0.75) 0%, rgba(10, 16, 29, 0.9) 100%);
-
-  /* Shadows */
-  --shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.25);
-  --shadow-md:     0 8px 24px -4px rgba(0, 0, 0, 0.4);
-  --shadow-lg:     0 20px 48px -10px rgba(0, 0, 0, 0.55);
-  --shadow-accent: 0 8px 25px -4px rgba(37, 99, 235, 0.4);
-  --shadow-gold:   0 8px 25px -4px rgba(37, 99, 235, 0.4);
-
-  /* Layout */
-  --section-py: clamp(32px, 4.5vh, 64px);
-  --container:  min(1280px, 92vw);
-}
-
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-}
-
-body {
-  font-family: var(--font-body);
-  background: var(--bg-deep);
-  color: var(--text-primary);
-  line-height: 1.65;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Custom Scrollbar ── */
-::-webkit-scrollbar { width: 7px; }
-::-webkit-scrollbar-track { background: var(--bg-deep); }
-::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.35); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent-light); }
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-/* ── Typography ── */
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. CUSTOM SCROLLBAR
+══════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ══════════════════════════════════════════════════════════════
+   4. CONTAINER & LAYOUT
+══════════════════════════════════════════════════════════════ */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. TYPOGRAPHY
+══════════════════════════════════════════════════════════════ */
 h1, h2, h3, h4, h5 {
   font-family: var(--font-heading);
-  line-height: 1.18;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  line-height: 1.15;
   color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
-.gradient-text {
-  background: var(--grad-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+h1 { font-size: clamp(2.8rem, 5vw, 5rem); }
+h2 { font-size: clamp(2rem, 3.5vw, 3.2rem); }
+h3 { font-size: clamp(1.3rem, 2vw, 1.8rem); }
+
+p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
 }
 
-.accent-gradient-text,
-.gold-text {
-  background: var(--grad-glow);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 800;
-}
-
-.accent-text {
-  color: var(--accent-light);
-}
-
-.highlight-text {
-  color: var(--accent-cyan);
-}
-
-/* ── Utility Containers ── */
-.container {
-  width: var(--container);
-  margin: 0 auto;
-}
-
-/* ── Buttons ── */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 13px 28px;
-  background: var(--grad-accent);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  font-family: var(--font-heading);
-  font-size: 13.5px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  border-radius: 6px;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: var(--shadow-accent);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px -4px rgba(37, 99, 235, 0.55);
-  filter: brightness(1.1);
-  color: #ffffff;
-}
-
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px 26px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-accent);
-  color: var(--text-primary);
-  font-family: var(--font-heading);
-  font-size: 13.5px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  border-radius: 6px;
-  cursor: pointer;
-  text-decoration: none;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.btn-outline:hover {
-  background: rgba(37, 99, 235, 0.12);
-  border-color: var(--accent-light);
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.btn-solid {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 32px;
-  background: var(--grad-accent);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  font-family: var(--font-heading);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  border-radius: 6px;
-  box-shadow: var(--shadow-accent);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none;
-}
-
-.btn-solid:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 34px -4px rgba(37, 99, 235, 0.6);
-  filter: brightness(1.1);
-  color: #ffffff;
-}
-
-/* ── Glass Cards ── */
-.glass-card {
-  background: var(--grad-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
-  transition: all 0.35s ease;
-}
-
-/* ── Section Tag / Pill Badges ── */
+/* Section eyebrow / tag */
 .section-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: rgba(37, 99, 235, 0.12);
-  border: 1px solid var(--border-accent);
-  border-radius: 30px;
-  font-family: var(--font-heading);
+  display: inline-block;
+  font-family: var(--font-nav);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--accent-cyan);
+  color: var(--gold);
   margin-bottom: 16px;
 }
 
 .section-tag::before {
   content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--accent-light);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--accent-light);
-}
-
-/* ── Section Divider Decor ── */
-.blueprint-title-decor {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  margin-right: 10px;
+  vertical-align: middle;
   position: relative;
-  height: 3px;
-  margin: 14px auto 0;
-  width: 100%;
-  max-width: 80px;
-  background: var(--grad-accent);
-  border-radius: 3px;
+  top: -1px;
 }
 
-/* ── Animations ── */
+/* Gold text accent */
+.gold-text {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* Thin gold divider line */
+.gold-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 20px 0;
+  opacity: 0.6;
+}
+
+/* Blueprint decoration — animated grow line */
+.blueprint-title-decor {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+  margin: 16px 0 24px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.blueprint-title-decor.in-view {
+  width: 80px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. GLOBAL BUTTONS
+══════════════════════════════════════════════════════════════ */
+
+/* Primary — gold solid */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--gold);
+  color: #0E0C0A;
+  font-family: var(--font-nav);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+
+/* Outline — ghost gold border */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 30px;
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-nav);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold-border-hover);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+.btn-outline:hover {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+}
+
+/* Solid dark variant */
+.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--gold);
+  color: #0E0C0A;
+  font-family: var(--font-nav);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), opacity var(--transition);
+}
+.btn-solid:hover {
+  opacity: 0.88;
+}
+
+/* Ghost — text only */
+.btn-ghost {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-nav);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: color var(--transition);
+}
+.btn-ghost:hover {
+  color: var(--gold);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. CARD BASE
+══════════════════════════════════════════════════════════════ */
+.luxury-card {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--card-radius);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.luxury-card:hover {
+  border-color: var(--gold-border-hover);
+  box-shadow: var(--shadow-gold);
+}
+
+/* glass-card — used in CTASection */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--card-radius);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8. SECTION HELPERS
+══════════════════════════════════════════════════════════════ */
+section {
+  padding: var(--section-pad) 0;
+}
+
+/* Thin full-width gold rule between sections */
+.section-rule {
+  border: none;
+  border-top: 1px solid var(--gold-border);
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   9. UTILITY ANIMATIONS
+══════════════════════════════════════════════════════════════ */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
-.anim-fade-up { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.anim-fade-in { animation: fadeIn 0.6s ease forwards; }
-.anim-delay-1 { animation-delay: 0.1s; opacity: 0; }
-.anim-delay-2 { animation-delay: 0.2s; opacity: 0; }
-.anim-delay-3 { animation-delay: 0.35s; opacity: 0; }
-.anim-delay-4 { animation-delay: 0.5s; opacity: 0; }
-
-/* ========================================================
-   LIGHT THEME OVERRIDES — Atmospheric Sky Blue Color Grading
-   (Sampled directly from user reference: Center #B7DAEE, Mid #D0E4EF, Edge #EDF1F4)
-   ======================================================== */
-body.light-theme {
-  --bg-deep:        #dbeef7; /* Soft atmosphere sky blue */
-  --bg-mid:         rgba(255, 255, 255, 0.76); /* Frosted luxury glass */
-  --bg-card:        rgba(255, 255, 255, 0.78);
-  --bg-card-hover:  rgba(255, 255, 255, 0.94);
-
-  --accent-primary:       #1d4ed8; /* Deep Executive Royal Blue */
-  --accent-light:         #2563eb;
-  --accent-cyan:          #0284c7;
-  --accent-dark:          #1e40af;
-  --accent-green:         #059669;
-
-  --accent-gold:          #1d4ed8;
-  --accent-gold-light:    #2563eb;
-  --accent-gold-dark:     #1e40af;
-
-  --border-subtle: rgba(255, 255, 255, 0.8);
-  --border-accent: rgba(37, 99, 235, 0.22);
-  --border-blue:   rgba(30, 64, 175, 0.2);
-  --border-gold:   rgba(37, 99, 235, 0.22);
-
-  --text-primary:   #091e42; /* Deep high-contrast architectural navy */
-  --text-secondary: #2c4468; /* Slate navy */
-  --text-muted:     #526b8e;
-  --text-accent:    #1d4ed8;
-  --text-gold:      #1d4ed8;
-
-  /* The exact radial color grading from user reference */
-  --grad-hero:    radial-gradient(ellipse 80% 65% at 50% 40%, #b7daee 0%, #cee6f6 38%, #e3f0f9 70%, #edf1f4 100%);
-  --grad-accent:  linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  --grad-text:    linear-gradient(135deg, #091e42 0%, #1d3557 100%);
-  --grad-glow:    linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0284c7 100%);
-  --grad-gold:    linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0284c7 100%);
-  --grad-surface: radial-gradient(ellipse at 50% 30%, #c2e2f6 0%, #d8ebf7 50%, #eef5fb 100%);
-  --grad-card:    linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(240, 247, 253, 0.72) 100%);
-
-  --shadow-sm:     0 2px 10px rgba(18, 52, 92, 0.05);
-  --shadow-md:     0 12px 32px -4px rgba(18, 52, 92, 0.08);
-  --shadow-lg:     0 24px 54px -10px rgba(18, 52, 92, 0.12);
-  --shadow-accent: 0 8px 24px -4px rgba(29, 78, 216, 0.25);
-  --shadow-gold:   0 8px 24px -4px rgba(29, 78, 216, 0.25);
-
-  /* Page-wide atmospheric color grading backdrop */
-  background: 
-    radial-gradient(ellipse 90% 65% at 50% 35%, #b7daee 0%, #d0e4ef 42%, #e5f1f8 72%, #edf1f4 100%) fixed;
-  background-color: #edf1f4;
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.3); }
 }
 
-body.light-theme .btn-primary {
-  color: #ffffff;
-  background: var(--grad-accent);
-}
+.anim-fade-up { animation: fadeUp 0.6s ease both; }
 
-body.light-theme .btn-outline {
-  background: rgba(255, 255, 255, 0.7);
-  color: var(--text-primary);
-  border-color: rgba(37, 99, 235, 0.3);
-  backdrop-filter: blur(12px);
+/* ══════════════════════════════════════════════════════════════
+   10. RESPONSIVE HELPERS
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  :root {
+    --section-pad: 72px;
+    --container-pad: 28px;
+  }
 }
-
-body.light-theme .btn-outline:hover {
-  background: #ffffff;
-  border-color: var(--accent-primary);
-  color: var(--accent-primary);
-}
-
-body.light-theme .glass-card {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.88);
-  box-shadow: 0 16px 40px -10px rgba(18, 52, 92, 0.08);
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 56px;
+    --container-pad: 20px;
+  }
 }

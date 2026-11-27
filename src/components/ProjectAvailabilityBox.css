@@ -1,54 +1,51 @@
+/* ============================================================
+   PROJECT AVAILABILITY BOX — Dark Luxury
+   ============================================================ */
+
 .pab {
-  background: rgba(37, 99, 235, 0.05);
-  border: 1px solid rgba(37, 99, 235, 0.16);
-  border-radius: 12px;
-  padding: 12px 14px;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  padding: 14px 16px;
   margin-bottom: 16px;
+  background: rgba(196, 163, 106, 0.04);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-body.light-theme .pab {
-  background: rgba(255, 255, 255, 0.72);
-  border-color: rgba(37, 99, 235, 0.16);
+  gap: 12px;
 }
 
 .pab__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .pab__booking-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: rgba(16, 185, 129, 0.14);
-  color: #10b981;
-  font-size: 11px;
+  font-family: var(--font-nav);
+  font-size: 9px;
   font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
 }
-
 .pab__dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #10b981;
+  background: var(--gold);
 }
 
 .pab__rera-link-wrap {
-  font-size: 11px;
+  font-family: var(--font-nav);
+  font-size: 9.5px;
   color: var(--text-muted);
 }
-
 .pab__rera-link {
-  color: var(--accent-primary);
-  font-weight: 600;
+  color: var(--gold-light);
   text-decoration: underline;
 }
 
@@ -57,198 +54,137 @@ body.light-theme .pab {
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
-
 .pab__count-item {
+  background: rgba(16, 16, 16, 0.6);
+  border: 1px solid rgba(196, 163, 106, 0.15);
+  border-radius: 2px;
+  padding: 8px 6px;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 7px 6px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
 }
-
-body.light-theme .pab__count-item {
-  background: rgba(15, 40, 80, 0.04);
-}
-
 .pab__count-num {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 800;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
   line-height: 1.1;
 }
-
-.pab__count-item.avail .pab__count-num { color: #10b981; }
-.pab__count-item.booked .pab__count-num { color: #f59e0b; }
-.pab__count-item.sold .pab__count-num { color: #3b82f6; }
-
+.pab__count-item.avail .pab__count-num { color: var(--gold); }
 .pab__count-lbl {
-  font-size: 10.5px;
+  font-family: var(--font-nav);
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  font-weight: 600;
 }
 
 .pab__bar {
+  height: 4px;
   display: flex;
-  height: 6px;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 1px;
   overflow: hidden;
-  background: rgba(148, 163, 184, 0.2);
 }
-
-.pab__bar-seg.avail { background: #10b981; }
-.pab__bar-seg.booked { background: #f59e0b; }
-.pab__bar-seg.sold { background: #3b82f6; }
+.pab__bar-seg.avail { background: var(--gold); }
+.pab__bar-seg.booked { background: #8B734B; }
+.pab__bar-seg.sold { background: #47433E; }
 
 .pab__possession {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding-top: 4px;
-  border-top: 1px dashed var(--border-subtle);
 }
-
 .pab__poss-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 11.5px;
-  gap: 8px;
+  font-size: 11px;
 }
-
-.pab__poss-lbl {
-  color: var(--text-muted);
-}
-
-.pab__poss-val {
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.pab__poss-val.is-confirmed { color: #10b981; }
-.pab__poss-val.is-pending {
-  color: var(--text-secondary);
-  font-weight: 500;
-  font-style: italic;
-}
+.pab__poss-lbl { color: var(--text-muted); }
+.pab__poss-val { color: var(--text-primary); font-weight: 500; }
+.pab__poss-val.is-confirmed { color: var(--gold); }
 
 .pab__progress-head {
   display: flex;
   justify-content: space-between;
-  font-size: 11.5px;
+  font-family: var(--font-nav);
+  font-size: 10px;
   color: var(--text-secondary);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
-
-.pab__progress-head strong {
-  color: var(--accent-primary);
-}
-
 .pab__progress-track {
-  height: 6px;
-  border-radius: 4px;
-  background: rgba(148, 163, 184, 0.2);
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1px;
   overflow: hidden;
 }
-
 .pab__progress-fill {
   height: 100%;
-  background: var(--grad-accent);
-  border-radius: 4px;
+  background: var(--gold);
 }
 
 .pab__toggle-btn {
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border-accent);
-  background: rgba(37, 99, 235, 0.08);
-  color: var(--accent-primary);
-  font-size: 11.5px;
-  font-weight: 700;
-  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  font-family: var(--font-nav);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
 }
+.pab__toggle-btn:hover { background: var(--gold-dim); }
 
 .pab__details {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-top: 6px;
+  gap: 12px;
+  padding-top: 4px;
 }
-
 .pab__detail-title {
-  font-size: 10.5px;
+  font-family: var(--font-nav);
+  font-size: 9.5px;
   font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
+  color: var(--gold);
   margin-bottom: 6px;
 }
-
 .pab__bhk-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
 }
-
 .pab__bhk-chip {
+  padding: 6px;
+  border: 1px solid rgba(196, 163, 106, 0.2);
+  border-radius: 2px;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  padding: 6px 8px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
-  font-size: 11px;
-  text-align: center;
-}
-
-body.light-theme .pab__bhk-chip {
-  background: #ffffff;
-}
-
-.pab__bhk-chip strong {
-  color: var(--text-primary);
-}
-
-.pab__bhk-chip span {
-  color: #10b981;
-  font-weight: 600;
   font-size: 10px;
 }
+.pab__bhk-chip strong { color: var(--text-primary); }
+.pab__bhk-chip span { color: var(--gold); font-size: 9.5px; }
 
 .pab__floor-list {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
-
 .pab__floor-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 11px;
-  padding: 5px 8px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.03);
+  font-size: 10.5px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
-
-body.light-theme .pab__floor-row {
-  background: rgba(255, 255, 255, 0.85);
-}
-
-.pab__floor-name {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.pab__floor-stats em {
-  font-style: normal;
-  font-weight: 600;
-}
-
-.pab__floor-stats em.avail { color: #10b981; }
-.pab__floor-stats em.booked { color: #f59e0b; }
-.pab__floor-stats em.sold { color: #3b82f6; }
+.pab__floor-name { color: var(--text-primary); }
+.pab__floor-stats em { font-style: normal; color: var(--text-muted); }
+.pab__floor-stats em.avail { color: var(--gold); }

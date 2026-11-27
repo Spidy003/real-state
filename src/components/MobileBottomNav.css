@@ -1,153 +1,61 @@
-/* ══════════════════════════════════════════════════════════════
-   Mobile Floating Bottom Dock — App-Style Ergonomics
-   ══════════════════════════════════════════════════════════════ */
+/* ============================================================
+   MOBILE BOTTOM NAV DOCK — Hidden on Desktop
+   ============================================================ */
+
 .mobile-bottom-dock {
   display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9000;
-  padding: 0 12px 10px;
-  pointer-events: none;
 }
 
 @media (max-width: 900px) {
   .mobile-bottom-dock {
-    display: flex;
-    justify-content: center;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 990;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+    background: rgba(16, 16, 16, 0.96);
+    border-top: 1px solid var(--gold-border);
   }
-}
-
-/* ── The pill card ── */
-.dock-inner {
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
-  padding: 8px 10px;
-  width: 100%;
-  max-width: 480px;
-  background: rgba(10, 16, 32, 0.92);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 44px;
-  box-shadow:
-    0 20px 48px -12px rgba(0, 0, 0, 0.72),
-    0 0 0 1px rgba(37, 99, 235, 0.12) inset;
-}
-
-body.light-theme .dock-inner {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(37, 99, 235, 0.14);
-  box-shadow:
-    0 20px 48px -12px rgba(15, 40, 80, 0.18),
-    0 0 0 1px rgba(37, 99, 235, 0.08) inset;
-}
-
-/* ── Individual Tab ── */
-.dock-tab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  text-decoration: none;
-  color: rgba(148, 163, 184, 0.75);
-  padding: 7px 12px;
-  border-radius: 24px;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  min-width: 52px;
-  min-height: 52px;
-  flex: 1;
-  position: relative;
-}
-
-body.light-theme .dock-tab {
-  color: rgba(100, 116, 139, 0.8);
-}
-
-.dock-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.dock-label {
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  transition: color 0.22s;
-  white-space: nowrap;
-}
-
-/* Active / hover states */
-.dock-tab:hover,
-.dock-tab.active {
-  color: #60a5fa;
-  background: rgba(37, 99, 235, 0.12);
-}
-
-body.light-theme .dock-tab:hover,
-body.light-theme .dock-tab.active {
-  color: #2563eb;
-  background: rgba(37, 99, 235, 0.08);
-}
-
-.dock-tab.active .dock-icon {
-  transform: translateY(-2px) scale(1.1);
-}
-
-/* Active indicator dot */
-.dock-tab.active::after {
-  content: '';
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #2563eb;
-}
-
-/* ── Primary CTA "Book Visit" button ── */
-.dock-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  color: #ffffff;
-  border: none;
-  border-radius: 32px;
-  font-family: var(--font-heading);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.55), 0 2px 6px rgba(37, 99, 235, 0.3);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
-  min-height: 52px;
-  flex-shrink: 0;
-}
-
-.dock-cta-btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.65);
-}
-
-.dock-cta-btn:active {
-  transform: translateY(0) scale(0.98);
-}
-
-/* Safe-area padding for iPhone Home Indicator */
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
-  .mobile-bottom-dock {
-    padding-bottom: calc(env(safe-area-inset-bottom) + 8px);
+  .dock-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    padding: 4px;
+    border: none;
+    background: transparent;
+  }
+  .dock-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 4px;
+    color: var(--text-muted);
+    font-family: var(--font-nav);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .dock-tab.active {
+    color: var(--gold);
+  }
+  .dock-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: var(--gold);
+    color: #0E0C0A;
+    border: none;
+    border-radius: 2px;
+    font-family: var(--font-nav);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 }

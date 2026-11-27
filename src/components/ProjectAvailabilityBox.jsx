@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import './ProjectAvailabilityBox.css'
+import { useState } from 'react'
 
 export default function ProjectAvailabilityBox({ project }) {
   const [expanded, setExpanded] = useState(false)

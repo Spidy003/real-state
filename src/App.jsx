@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import './App.css'
-import './mobile-overrides.css'
 
 // Desktop components
 import Navbar from './components/Navbar'
@@ -27,7 +25,7 @@ function getInitialRoute() {
 }
 
 export default function App() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark')
 
   // Detect mobile (<= 900px) with live resize tracking
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 900)
@@ -82,7 +80,7 @@ export default function App() {
 
   const handleCloseVisitModal = () => setIsVisitModalOpen(false)
 
-  const handleOpenFloorPlan  = (project) => setSelectedFloorPlan(project)
+  const handleOpenFloorPlan = (project) => setSelectedFloorPlan(project)
   const handleCloseFloorPlan = () => setSelectedFloorPlan(null)
 
   useEffect(() => {

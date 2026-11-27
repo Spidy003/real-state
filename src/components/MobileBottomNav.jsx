@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
 import './MobileBottomNav.css'
+import { useState, useEffect } from 'react'
 
 export default function MobileBottomNav({ onOpenVisitModal }) {
   const [activeTab, setActiveTab] = useState('home')

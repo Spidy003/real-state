@@ -1,24 +1,7 @@
-import { lazy, Suspense } from 'react'
 import './MobileHome.css'
-
-const BuildingCanvas = lazy(() => import('./BuildingCanvas'))
-
-export default function MobileHome({ theme, toggleTheme, onCheckProperty, onOpenVisitModal, onOpenEnquiry }) {
+export default function MobileHome({ theme, toggleTheme, onCheckProperty, onOpenVisitModal, onOpenEnquiry, onOpenMenu }) {
   return (
     <div className="mhome">
-      {/* ── 3D Canvas — full-bleed top area ── */}
-      <div className="mhome__canvas-area">
-        <Suspense fallback={
-          <div className="mhome__canvas-loader">
-            <div className="mhome__loader-ring" />
-          </div>
-        }>
-          <BuildingCanvas theme={theme} isExploded={false} autoRotate={true} />
-        </Suspense>
-        {/* gradient fade into bottom card */}
-        <div className="mhome__canvas-fade" />
-      </div>
-
       {/* ── Top Bar ── */}
       <div className="mhome__topbar">
         {/* Logo */}
@@ -34,20 +17,32 @@ export default function MobileHome({ theme, toggleTheme, onCheckProperty, onOpen
           </div>
         </div>
 
-        {/* Theme toggle */}
-        <button className="mhome__theme-btn" onClick={toggleTheme} aria-label="Toggle theme">
-          {theme === 'light' ? (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
-            </svg>
+        {/* Right actions: Theme toggle + Menu */}
+        <div className="mhome__topbar-actions">
+          <button className="mhome__theme-btn" onClick={toggleTheme} aria-label="Toggle theme">
+            {theme === 'light' ? (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
+              </svg>
+            )}
+          </button>
+
+          {onOpenMenu && (
+            <button className="mhome__menu-btn" onClick={onOpenMenu} aria-label="Open menu">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </button>
           )}
-        </button>
+        </div>
       </div>
 
       {/* ── Bottom Content Card ── */}

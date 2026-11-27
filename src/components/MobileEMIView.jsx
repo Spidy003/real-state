@@ -1,12 +1,16 @@
-import { useState, useMemo } from 'react'
 import './MobileEMIView.css'
+import { useState, useMemo, useEffect } from 'react'
 
 const formatCurrency = (val) =>
   new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val)
 
-export default function MobileEMIView({ project, onBack, onOpenVisitModal }) {
+export default function MobileEMIView({ project, projectsList = [], onSelectProject, onBack, onOpenMenu, onOpenVisitModal }) {
   const configs = Object.keys(project.basePrices)
   const [selectedConfig, setSelectedConfig] = useState(configs[0])
+
+  useEffect(() => {
+    setSelectedConfig(Object.keys(project.basePrices)[0])
+  }, [project])
   const [downPayPct, setDownPayPct] = useState(20)
   const [tenureYears, setTenureYears] = useState(20)
   const [interestRate, setInterestRate] = useState(8.5)
@@ -47,8 +51,39 @@ export default function MobileEMIView({ project, onBack, onOpenVisitModal }) {
           <span className="memi__header-title">EMI Calculator</span>
           <span className="memi__header-sub">{project.title} · {project.location.split(',')[0]}</span>
         </div>
-        <span className="memi__header-icon">📊</span>
+        {onOpenMenu ? (
+          <button className="memi__back" onClick={onOpenMenu} aria-label="Open menu" style={{ fontSize: 17 }}>
+            ☰
+          </button>
+        ) : (
+          <span className="memi__header-icon">📊</span>
+        )}
       </div>
+
+      {projectsList.length > 1 && onSelectProject && (
+        <div style={{ display: 'flex', gap: 8, padding: '10px 16px 0', overflowX: 'auto' }}>
+          {projectsList.map(p => (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => onSelectProject(p)}
+              style={{
+                padding: '6px 12px',
+                borderRadius: 20,
+                border: '1px solid var(--border-subtle)',
+                background: p.id === project.id ? 'var(--accent-primary)' : 'transparent',
+                color: p.id === project.id ? '#fff' : 'var(--text-secondary)',
+                fontSize: 12,
+                fontWeight: 700,
+                whiteSpace: 'nowrap',
+                cursor: 'pointer',
+              }}
+            >
+              {p.title}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="memi__scroll">
         {/* BHK Selector */}

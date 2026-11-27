@@ -1,6 +1,6 @@
+import './SiteVisitModal.css'
 import { useState } from 'react'
 import { addSiteVisit, getPublishedProjects } from '../data/projectStore'
-import './SiteVisitModal.css'
 
 export default function SiteVisitModal({ isOpen, onClose, defaultProject = 'Aura Heights (Kharghar)' }) {
   const [formData, setFormData] = useState({

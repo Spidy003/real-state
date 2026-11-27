@@ -1,393 +1,255 @@
-/* ── Floor Plan Modal ─────────────────────────────────────────── */
+/* ============================================================
+   FLOOR PLAN MODAL — Dark Luxury Architectural Blueprint
+   ============================================================ */
+
 .floor-modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 10000;
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 20px;
 }
 
 .floor-modal-backdrop {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  background: rgba(4, 7, 15, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  cursor: pointer;
+  background: rgba(8, 8, 8, 0.88);
 }
 
 .floor-modal-card {
   position: relative;
-  z-index: 10;
+  z-index: 1;
   width: 100%;
-  max-width: 1020px;
-  height: 90vh;
-  max-height: 680px;
-  background: var(--bg-mid);
-  border: 1px solid var(--border-gold);
-  border-radius: 16px;
+  max-width: 1040px;
+  max-height: 92vh;
+  overflow-y: auto;
   padding: 36px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(200, 164, 107, 0.1);
-  animation: zoomInFadeModal 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-body.light-theme .floor-modal-card {
-  background: #ffffff;
-  border-color: rgba(166, 124, 59, 0.25);
-  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.15);
-}
-
-@keyframes zoomInFadeModal {
-  from { opacity: 0; transform: scale(0.96) translateY(12px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: 4px;
 }
 
 .floor-modal-close-btn {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 20px;
+  right: 20px;
   width: 36px;
   height: 36px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  border-radius: 50%;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  transition: all 0.25s ease;
+  background: transparent;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  color: var(--text-secondary);
 }
-
 .floor-modal-close-btn:hover {
-  background: var(--accent-gold);
-  color: #080c16;
-  border-color: var(--accent-gold);
-  transform: rotate(90deg);
-}
-
-body.light-theme .floor-modal-close-btn {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 .floor-modal-header {
-  margin-bottom: 24px;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 16px;
+  margin-bottom: 28px;
 }
-
 .modal-tag-badge {
-  display: inline-block;
-  font-family: var(--font-heading);
+  font-family: var(--font-nav);
   font-size: 10px;
   font-weight: 700;
-  color: var(--accent-gold);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.modal-title {
+  font-size: 2rem;
   margin-bottom: 6px;
 }
-
-.modal-title {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-}
-
 .modal-subtitle {
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--text-secondary);
 }
 
-/* ── Split Grid ── */
 .floor-modal-body-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 32px;
-  flex: 1;
-  overflow: hidden;
-  min-height: 0;
-}
-
-@media (max-width: 820px) {
-  .floor-modal-card {
-    height: auto;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-  .floor-modal-body-grid {
-    grid-template-columns: 1fr;
-    overflow: visible;
-  }
-}
-
-/* ── Left Blueprint ── */
-.blueprint-column {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 28px;
+  align-items: start;
 }
 
 .blueprint-tabs-bar {
   display: flex;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
 }
-
 .blueprint-tab-btn {
-  padding: 8px 18px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
+  padding: 9px 18px;
+  background: transparent;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  font-family: var(--font-nav);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--text-secondary);
-  font-family: var(--font-heading);
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
-
-body.light-theme .blueprint-tab-btn {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
-}
-
-.blueprint-tab-btn:hover {
-  border-color: var(--accent-gold);
-  color: var(--text-primary);
-}
-
 .blueprint-tab-btn.active {
-  background: var(--accent-gold);
-  border-color: var(--accent-gold);
-  color: #080c16;
-}
-
-body.light-theme .blueprint-tab-btn.active {
-  color: #ffffff;
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0E0C0A;
 }
 
 .blueprint-svg-container {
-  flex: 1;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  background: #12100E;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  padding: 16px;
 }
-
-body.light-theme .blueprint-svg-container {
-  background: #f8fafc;
-  border-color: #cbd5e1;
-}
-
 .floor-plan-svg {
   width: 100%;
-  height: 100%;
-  max-height: 380px;
+  height: auto;
+  display: block;
 }
-
-/* SVG Rooms */
-.room-group {
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
+.room-group { cursor: pointer; }
 .room-bg {
-  fill: rgba(255, 255, 255, 0.03);
-  stroke: var(--accent-gold);
+  fill: rgba(196, 163, 106, 0.06);
+  stroke: rgba(196, 163, 106, 0.45);
   stroke-width: 0.8;
-  transition: all 0.2s ease;
+  transition: fill 0.2s ease, stroke 0.2s ease;
 }
-
-body.light-theme .room-bg {
-  fill: #ffffff;
-  stroke: rgba(166, 124, 59, 0.4);
-}
-
-.room-group:hover .room-bg,
-.room-group.hovered .room-bg {
-  fill: rgba(200, 164, 107, 0.15);
+.room-group.hovered .room-bg,
+.room-group.selected .room-bg {
+  fill: rgba(196, 163, 106, 0.22);
+  stroke: #C4A36A;
   stroke-width: 1.2;
 }
-
-.room-group.selected .room-bg {
-  fill: rgba(200, 164, 107, 0.28);
-  stroke: var(--accent-gold);
-  stroke-width: 1.5;
-}
-
-.balcony-bg {
-  stroke-dasharray: 2, 2;
-}
-
 .room-label {
-  fill: var(--text-primary);
-  font-family: var(--font-heading);
-  font-size: 2.8px;
-  font-weight: 800;
+  fill: #F1EDE5;
+  font-family: var(--font-nav);
+  font-size: 3px;
+  font-weight: 600;
   text-anchor: middle;
-  letter-spacing: 0.2px;
+  pointer-events: none;
 }
-
-body.light-theme .room-label {
-  fill: #0f172a;
-}
-
 .furniture-item {
-  fill: rgba(200, 164, 107, 0.2);
-  stroke: var(--accent-gold);
+  fill: rgba(196, 163, 106, 0.16);
+  stroke: rgba(196, 163, 106, 0.4);
   stroke-width: 0.4;
 }
 
-/* ── Right Specifications ── */
+/* Specs Column */
 .specs-column {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  padding-right: 6px;
+  background: var(--bg-espresso);
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  padding: 24px;
 }
-
 .specs-box-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gold-border);
 }
-
 .spec-indicator {
   width: 8px;
   height: 8px;
-  background: var(--accent-gold);
-  border-radius: 50%;
+  background: var(--gold);
+  border-radius: 1px;
 }
-
 .specs-box-header h4 {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-primary);
+  font-size: 1.35rem;
 }
 
 .specs-card-content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
-
 .spec-table-row {
   display: flex;
   justify-content: space-between;
   font-size: 13px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border-subtle);
+  gap: 12px;
 }
-
-.spec-label {
-  color: var(--text-muted);
-}
-
-.spec-value {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.text-gold {
-  color: var(--accent-gold);
-  font-weight: 800;
-}
+.spec-label { color: var(--text-muted); }
+.spec-value { color: var(--text-primary); font-weight: 500; text-align: right; }
+.spec-value.text-gold { color: var(--gold); font-family: var(--font-heading); font-size: 1.25rem; }
 
 .spec-separator {
   height: 1px;
-  background: var(--border-subtle);
-  margin: 6px 0;
+  background: var(--gold-border);
+  margin: 8px 0;
 }
 
 .room-specs-detail-box {
-  background: rgba(200, 164, 107, 0.08);
-  border: 1px solid var(--border-gold);
-  border-radius: 8px;
   padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
-
-body.light-theme .room-specs-detail-box {
-  background: #f8fafc;
-}
-
 .active-room-title-bar h5 {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 10px;
+  font-size: 1.25rem;
+  color: var(--gold);
 }
-
 .room-spec-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-bottom: 12px;
 }
-
 .room-spec-item {
   display: flex;
   flex-direction: column;
-  font-size: 12px;
+  gap: 2px;
 }
-
 .room-spec-item .lbl {
-  color: var(--text-muted);
+  font-family: var(--font-nav);
+  font-size: 9px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 10px;
+  color: var(--text-muted);
 }
-
 .room-spec-item .val {
-  font-weight: 700;
+  font-size: 12.5px;
   color: var(--text-primary);
 }
-
 .room-desc-paragraph .desc-heading {
-  font-size: 9.5px;
-  font-weight: 700;
-  color: var(--accent-gold);
   display: block;
+  font-family: var(--font-nav);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--gold);
   margin-bottom: 4px;
 }
-
 .room-desc-paragraph p {
-  font-size: 12.5px;
-  color: var(--text-secondary);
-  line-height: 1.5;
+  font-size: 13px;
 }
 
-/* CTA */
 .modal-cta-box {
-  margin-top: 14px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-
 .modal-action-btn {
   width: 100%;
-  padding: 13px;
-  font-size: 13px;
+  justify-content: center;
 }
-
-.notice {
-  font-size: 10px;
+.modal-cta-box .notice {
+  font-size: 11px;
   color: var(--text-muted);
   text-align: center;
-  line-height: 1.4;
+}
+
+@media (max-width: 860px) {
+  .floor-modal-body-grid { grid-template-columns: 1fr; }
+  .floor-modal-card { padding: 24px 18px; }
 }

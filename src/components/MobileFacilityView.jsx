@@ -1,7 +1,7 @@
+import './MobileFacilityView.css'
 import { useState, useMemo, useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import './MobileFacilityView.css'
 
 const FILTERS = [
   { id: 'transit',   emoji: '🚇', label: 'Transit' },
@@ -10,7 +10,7 @@ const FILTERS = [
   { id: 'lifestyle', emoji: '🛍️', label: 'Lifestyle' },
 ]
 
-export default function MobileFacilityView({ project, theme, onBack, onOpenVisitModal }) {
+export default function MobileFacilityView({ project, projectsList = [], onSelectProject, theme, onBack, onOpenMenu, onOpenVisitModal }) {
   const [activeFilter, setActiveFilter] = useState('transit')
   const mapContainerRef = useRef(null)
 
@@ -35,7 +35,7 @@ export default function MobileFacilityView({ project, theme, onBack, onOpenVisit
     const projectCoords = [project.lat, project.lng]
     map.setView(projectCoords, 13)
 
-    const projColor = theme === 'light' ? '#1d4ed8' : '#3b82f6'
+    const projColor = theme === 'light' ? '#78582b' : '#c8a262'
     const projIcon = L.divIcon({
       className: 'custom-project-marker',
       html: `<div class="marker-pulse-large" style="border-color:${projColor}"></div><div class="marker-dot-project" style="background-color:${projColor}"></div>`,
@@ -45,7 +45,7 @@ export default function MobileFacilityView({ project, theme, onBack, onOpenVisit
       .bindTooltip(`<b>${project.title}</b>`, { permanent: true, direction: 'bottom', className: 'map-tooltip' })
       .addTo(map)
 
-    const lmColor = theme === 'light' ? '#1e40af' : '#38bdf8'
+    const lmColor = theme === 'light' ? '#735225' : '#d4af37'
     activeLandmarks.forEach(lm => {
       const lmCoords = [lm.lat, lm.lng]
       const lmIcon = L.divIcon({
@@ -64,6 +64,8 @@ export default function MobileFacilityView({ project, theme, onBack, onOpenVisit
       map.fitBounds(bounds, { padding: [44, 44] })
     }
 
+    setTimeout(() => { try { map.invalidateSize() } catch (_) {} }, 200)
+
     return () => { map.remove() }
   }, [project, activeFilter, theme, activeLandmarks])
 
@@ -80,8 +82,39 @@ export default function MobileFacilityView({ project, theme, onBack, onOpenVisit
           <span className="mfac__header-title">Nearby Facilities</span>
           <span className="mfac__header-sub">{project.title} · {project.location.split(',')[0]}</span>
         </div>
-        <span className="mfac__header-icon">🗺️</span>
+        {onOpenMenu ? (
+          <button className="mfac__back" onClick={onOpenMenu} aria-label="Open menu" style={{ fontSize: 17 }}>
+            ☰
+          </button>
+        ) : (
+          <span className="mfac__header-icon">🗺️</span>
+        )}
       </div>
+
+      {projectsList.length > 1 && onSelectProject && (
+        <div style={{ display: 'flex', gap: 8, padding: '8px 16px 0', overflowX: 'auto' }}>
+          {projectsList.map(p => (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => onSelectProject(p)}
+              style={{
+                padding: '6px 12px',
+                borderRadius: 20,
+                border: '1px solid var(--border-subtle)',
+                background: p.id === project.id ? 'var(--accent-primary)' : 'transparent',
+                color: p.id === project.id ? '#fff' : 'var(--text-secondary)',
+                fontSize: 12,
+                fontWeight: 700,
+                whiteSpace: 'nowrap',
+                cursor: 'pointer',
+              }}
+            >
+              {p.title}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Filter chips */}
       <div className="mfac__filter-row">

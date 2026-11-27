@@ -1,6 +1,11 @@
-/* MobileApp shell — full-bleed, no body padding override needed */
+/* ============================================================
+   MOBILE APP SHELL — Dark Luxury
+   ============================================================ */
+
 .mobile-app-shell {
-  min-height: 100dvh;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
 }

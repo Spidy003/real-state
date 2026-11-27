@@ -1,7 +1,7 @@
+import './BuyerHub.css'
 import { useState, useMemo, useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import './BuyerHub.css'
 
 const projectPricing = {
   kharghar: {
@@ -170,7 +170,7 @@ export default function BuyerHub({ theme }) {
     map.setView(projectCoords, 13)
 
     // Project center node
-    const projColor = theme === 'light' ? '#1d4ed8' : '#3b82f6'
+    const projColor = theme === 'light' ? '#78582b' : '#c8a262'
     const projIcon = L.divIcon({
       className: 'custom-project-marker',
       html: `
@@ -186,7 +186,7 @@ export default function BuyerHub({ theme }) {
       .addTo(map)
 
     // Category Landmark nodes & Connection lines
-    const landmarkColor = theme === 'light' ? '#1e40af' : '#38bdf8'
+    const landmarkColor = theme === 'light' ? '#735225' : '#d4af37'
     activeLandmarks.forEach((lm) => {
       const lmCoords = [lm.lat, lm.lng]
       const lmIcon = L.divIcon({

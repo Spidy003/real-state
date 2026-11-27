@@ -1,68 +1,39 @@
-/* ── CTA / Site Tour Section ───────────────────────────────────── */
+/* ============================================================
+   CTA SECTION — Dark Luxury Editorial
+   ============================================================ */
+
 .cta-section {
-  padding: var(--section-py) 0;
-  position: relative;
-  background: var(--bg-deep);
+  background: var(--bg-espresso);
+  border-top: 1px solid var(--gold-border);
 }
 
-.cta-inner {
-  position: relative;
-  z-index: 2;
-}
-
-/* ── Combined Wrapper Card ── */
 .cta-wrapper-card {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  border-radius: 16px;
-  overflow: hidden;
-  background: var(--bg-card);
-  border: 1px solid var(--border-accent);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-  width: 100%;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  padding: 56px;
+  align-items: center;
 }
 
-body.light-theme .cta-section {
-  background: transparent;
-}
-
-body.light-theme .cta-wrapper-card {
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 24px 60px rgba(18, 52, 92, 0.08);
-}
-
-/* ── Left Details ── */
 .cta-left-details {
-  padding: 56px 48px;
-  border-right: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-body.light-theme .cta-left-details {
-  border-right-color: rgba(15, 23, 42, 0.08);
+  align-items: flex-start;
 }
 
 .cta-title {
-  font-size: clamp(2rem, 3.2vw, 2.6rem);
-  font-weight: 800;
-  margin: 0 0 16px;
-  line-height: 1.18;
-  color: var(--text-primary);
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.12;
+  margin-bottom: 8px;
 }
 
 .cta-large-desc {
   font-size: 15px;
   color: var(--text-secondary);
-  line-height: 1.7;
   margin-bottom: 24px;
+  max-width: 540px;
 }
 
-/* Feature checklist */
 .cta-features-list {
   display: flex;
   flex-direction: column;
@@ -73,34 +44,29 @@ body.light-theme .cta-left-details {
 .cta-feat-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 13.5px;
+  gap: 12px;
+  font-size: 14px;
   color: var(--text-primary);
 }
 
 .feat-check {
   width: 20px;
   height: 20px;
-  border-radius: 50%;
-  background: rgba(200, 164, 107, 0.15);
-  color: var(--accent-gold);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  color: var(--gold);
   font-size: 11px;
-  font-weight: 800;
+  flex-shrink: 0;
 }
 
 .cta-actions {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.cta-action-btn {
-  padding: 16px 36px;
-  font-size: 14px;
-  width: fit-content;
+  align-items: flex-start;
+  gap: 18px;
 }
 
 .cta-quick-contacts {
@@ -108,110 +74,69 @@ body.light-theme .cta-left-details {
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  font-size: 12.5px;
-  color: var(--text-secondary);
+  font-family: var(--font-nav);
+  font-size: 11px;
+  color: var(--text-muted);
 }
 
 .quick-contact-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--accent-gold);
-  text-decoration: none;
-  font-weight: 700;
-  font-family: var(--font-heading);
-  transition: color 0.2s ease;
+  color: var(--gold-light);
+  font-weight: 600;
 }
+.quick-contact-link:hover { color: var(--gold); }
 
-.quick-contact-link:hover {
-  color: var(--accent-gold-light);
-  text-decoration: underline;
-}
-
-.contact-sep {
-  opacity: 0.3;
-}
-
-.experience-center-hours {
-  color: var(--text-muted);
-}
-
-/* ── Right Image ── */
+/* Right Image */
 .cta-right-image {
   position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px;
-  background: rgba(0, 0, 0, 0.15);
-}
-
-body.light-theme .cta-right-image {
-  background: #f8fafc;
+  height: 440px;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  overflow: hidden;
 }
 
 .dream-home-full-img {
   width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
-  transition: transform 0.5s ease;
+  height: 100%;
+  object-fit: cover;
 }
 
 .dream-home-badge {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
-  z-index: 2;
-  display: flex;
+  bottom: 20px;
+  left: 20px;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: rgba(8, 12, 22, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border-gold);
-  border-radius: 30px;
-  font-family: var(--font-heading);
-  font-size: 12px;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-body.light-theme .dream-home-badge {
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--text-primary);
-  border-color: rgba(166, 124, 59, 0.3);
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(16, 16, 16, 0.92);
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  font-family: var(--font-nav);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
 }
 
 .pulse-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--accent-green);
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
   border-radius: 50%;
-  box-shadow: 0 0 8px var(--accent-green);
+  animation: pulse 2s infinite;
 }
 
-/* ── Responsive ── */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .cta-wrapper-card {
     grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 32px;
   }
-  
-  .cta-left-details {
-    padding: 36px 24px;
-    border-right: none;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .cta-action-btn {
-    width: 100%;
-  }
-
   .cta-right-image {
-    padding: 24px;
+    height: 300px;
   }
 }

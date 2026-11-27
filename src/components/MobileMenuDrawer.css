@@ -1,0 +1,136 @@
+/* ============================================================
+   MOBILE MENU DRAWER — Dark Luxury
+   ============================================================ */
+
+.mmenu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  background: rgba(8, 8, 8, 0.82);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mmenu-drawer {
+  width: 86%;
+  max-width: 340px;
+  height: 100%;
+  background: var(--bg-card);
+  border-left: 1px solid var(--gold-border);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 16px;
+  overflow-y: auto;
+}
+
+.mmenu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gold-border);
+  margin-bottom: 12px;
+}
+
+.mmenu-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mmenu-brand-icon { color: var(--gold); line-height: 0; }
+.mmenu-brand-name {
+  font-family: var(--font-nav);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--text-primary);
+}
+.mmenu-brand-sub {
+  font-family: var(--font-nav);
+  font-size: 8.5px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+
+.mmenu-close {
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  color: var(--text-secondary);
+}
+
+.mmenu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.mmenu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: var(--text-primary);
+}
+.mmenu-item.active,
+.mmenu-item:hover {
+  background: var(--bg-espresso);
+  border-color: var(--gold-border);
+}
+
+.mmenu-item-icon { font-size: 17px; flex-shrink: 0; }
+.mmenu-item-text { display: flex; flex-direction: column; flex: 1; }
+.mmenu-item-label {
+  font-family: var(--font-nav);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.mmenu-item-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.mmenu-item-arrow {
+  color: var(--gold);
+  font-size: 18px;
+}
+
+.mmenu-footer {
+  padding-top: 14px;
+  border-top: 1px solid var(--gold-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mmenu-theme-row {
+  padding: 11px 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  color: var(--text-secondary);
+  font-family: var(--font-nav);
+  font-size: 11px;
+  text-align: left;
+}
+
+.mmenu-visit-btn {
+  padding: 13px 16px;
+  background: var(--gold);
+  color: #0E0C0A;
+  border: none;
+  border-radius: 2px;
+  font-family: var(--font-nav);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
